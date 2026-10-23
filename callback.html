@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="referrer" content="no-referrer">
+<title>Login complete</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+<h1>Almost done</h1>
+<p>Copy this address and paste it into the terminal that is waiting for it. Nothing is sent anywhere from this page.</p>
+<textarea id="url" readonly></textarea>
+<button id="copy" type="button">Copy</button>
+<p id="note" class="muted"></p>
+</main>
+<script>
+  const box = document.getElementById("url");
+  box.value = window.location.href;
+  document.getElementById("copy").addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(box.value); document.getElementById("note").textContent = "Copied."; }
+    catch (e) { box.select(); document.getElementById("note").textContent = "Press Ctrl+C to copy."; }
+  });
+</script>
+</body>
+</html>
